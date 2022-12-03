@@ -1,7 +1,7 @@
 export default function CartPage() {
     return (
         <div>
-            <h2>Товары в корзине</h2>
+            <h3>Товары в корзине</h3>
             <table>
                 <tr>
                     <td>1</td>

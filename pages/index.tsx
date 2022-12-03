@@ -13,9 +13,9 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
+        <h3>
           Добро пожаловать, покупатель!
-        </h1>
+        </h3>
         <span>Основной контент</span>
         <Link href='products'>Все товары</Link>
       </main>

@@ -1,8 +1,10 @@
+import styles from '../styles/Home.module.css'
 import Link from 'next/link'
+
 
 export default function SiteHeader() {
     return (
-        <nav>
+        <nav className={styles.navbar}>
             <ul>
                 <li>
                     <Link href="/">Главная</Link>    

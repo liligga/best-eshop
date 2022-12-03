@@ -1,5 +1,7 @@
 .container {
   padding: 0 2rem;
+  width: clam(500px, 85%, 1000px);
+  margin-inline: auto;
 }
 
 .main {
@@ -10,6 +12,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.navbar {
+  height: 30px;
+  padding-block: 1em;
+}
+
+.navbar ul{
+  display: flex;
+  justify-content: center;
+  gap: 1.5em;
+}
+
+.productList {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .footer {
@@ -98,9 +116,9 @@
 }
 
 .card p {
-  margin: 0;
+  /* margin: 0;
   font-size: 1.25rem;
-  line-height: 1.5;
+  line-height: 1.5; */
 }
 
 .logo {

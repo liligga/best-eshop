@@ -19,6 +19,9 @@ export default function SiteHeader() {
                     <Link href="/static/about-us">О нас</Link>
                 </li>
                 <li>
+                    <Link href="/static/write-us">Обратная связь</Link>
+                </li>
+                <li>
                     <Link href="/cart">Корзина</Link>
                 </li>
             </ul>

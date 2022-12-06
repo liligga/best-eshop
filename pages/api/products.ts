@@ -1,13 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { Product } from '../../types/products'
 
-type Product = {
-  id: number,
-  name: string,
-  price: number,
-  desc: string,
-  images: string[],
-  category: string
-}
 
 export default function handler(
   req: NextApiRequest,
@@ -21,7 +14,7 @@ export default function handler(
         price: 20.8,
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, laboriosam!",
         images: ["1.jpg"],
-        category: "Категория 1"
+        category: 1
       },
       {
         id: 2,
@@ -29,7 +22,7 @@ export default function handler(
         price: 110.2,
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, laboriosam!",
         images: ["2.jpg"],
-        category: "Категория 1"
+        category: 1
       },
       {
         id: 3,
@@ -37,7 +30,7 @@ export default function handler(
         price: 65.5,
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, laboriosam!",
         images: ["3.jpg"],
-        category: "Категория 2"
+        category: 2
       }
     ]
   )

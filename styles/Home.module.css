@@ -30,6 +30,11 @@
   flex-wrap: wrap;
 }
 
+.categoryList {
+  display: flex;
+  gap: 5px;
+}
+
 .footer {
   display: flex;
   flex: 1;

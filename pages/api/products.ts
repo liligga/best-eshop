@@ -22,7 +22,7 @@ export default function handler(
         price: 110.2,
         desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab, tempora doloribus!",
         images: ["2.jpg"],
-        category: 1
+        category: 2
       },
       {
         id: 3,
@@ -30,7 +30,7 @@ export default function handler(
         price: 65.5,
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptas ex vitae!",
         images: ["3.jpg"],
-        category: 2
+        category: 3
       }
     ]
   )

@@ -3,6 +3,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import ProductSearch from '../../components/productSearch'
+import ProductList from '../../components/productList'
+import { Product } from '../../types/products'
 
 
 const getProducts = async () => {
@@ -38,18 +40,7 @@ export default function ProductListPage() {
                 <h3>Список наших товаров</h3>
                 <ProductSearch onSearch={submitSearch}/>
                 <div className={styles.productList}>
-
-                    {products.filter(p => p.name.toLowerCase().includes(searchToken)||p.desc.toLowerCase().includes(searchToken)).map((p) => 
-                        <div className={styles.card}>
-                            <Link href={`/products/${p.id}`}>{p.name}</Link>
-                            <p>
-                                {p.desc}
-                            </p>
-                            <p>Цена: {p.price}</p>
-                            <p>Категория: {p.category}</p>
-                        </div>
-
-                    )}
+                    <ProductList products={products.filter((p: Product) => p.name.toLowerCase().includes(searchToken)||p.desc.toLowerCase().includes(searchToken))} />
                 </div>
                 
             </main>

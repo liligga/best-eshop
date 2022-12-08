@@ -1,7 +1,6 @@
 import styles from '../../styles/Home.module.css'
 import ProductList from '../../components/productList'
 import { useEffect, useState } from 'react'
-import { getEnabledCategories } from 'trace_events'
 import { Category, Product } from '../../types/products'
 
 
@@ -48,7 +47,6 @@ export default function CategoriesPage() {
                 </ul>
                 <div className={styles.productList}>
                     <ProductList products={products.filter(FILTER_MAP[typeof activeCategory])} />
-
                 </div>
             </main>
         </div>

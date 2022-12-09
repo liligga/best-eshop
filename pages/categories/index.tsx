@@ -40,7 +40,7 @@ export default function CategoriesPage() {
                 <ul className={styles.categoryList}>
                     <li><a href="#" onClick={() => setActiveCategory(true)}>Все</a></li>
                     <>{categories.map((c: Category) => 
-                        <li>
+                        <li key={c.id}>
                             <a href="#" onClick={() => setActiveCategory(c.id) }>{c.name}</a>
                         </li>
                     )}</>

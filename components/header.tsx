@@ -13,7 +13,7 @@ export default function SiteHeader() {
                     <Link href="/products">Все товары</Link>    
                 </li>
                 <li>
-                    <Link href="categories">Категории</Link>    
+                    <Link href="/categories">Категории</Link>    
                 </li>
                 <li>
                     <Link href="/static/about-us">О нас</Link>

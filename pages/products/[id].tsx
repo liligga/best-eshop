@@ -7,12 +7,16 @@ export default function ProductDetailsPage() {
     const router = useRouter()
     const { id } = router.query
 
+    const handleClick = (e) => {
+        e.preventDefault()
+        router. back()
+    }
 
     return (
         <div className={styles.container}>
             <main className={styles.main}>
                 <h2>Подробнее о товаре {id}</h2>
-                <Link href="/products">Список всех товаров</Link>
+                <a onClick={handleClick}>Назад</a>
             </main>
         </div>
     )

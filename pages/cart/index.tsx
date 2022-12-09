@@ -1,6 +1,6 @@
 import styles from '@/styles/Home.module.css'
 import products from './cartProducts.json'
-import { Product } from '@/types/products'
+import { Product, CartItemType } from '@/types/products'
 import CartItem from '@/components/cartItem'
 import { useState } from 'react'
 import { selectCartState, addToCart } from "@/store/cartSlice";

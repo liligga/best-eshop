@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { AppState } from "./store";
 import { HYDRATE } from "next-redux-wrapper";
-import { Product, Category } from '@/types/products'
+import { Product, CartItemType } from '@/types/products'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 
 // Type for our state
 export interface CartState {
-  cartState: Product[];
+  cartState: CartItemType[];
 }
 
 // Initial state
@@ -22,12 +22,30 @@ export const cartSlice = createSlice({
   reducers: {
 
     // Action to set the cart status
-    addToCart: (state, action: PayloadAction<Product>) => {
-      console.log(action.payload);
-      state.cartState = [...state.cartState, action.payload];
+    addToCart: (state, action: PayloadAction<CartItemType>) => {
+      // state.cartState = [...state.cartState, action.payload]
       console.log(state.cartState);
       
-    },
+      if(state.cartState.find((p: CartItemType) => p.product.id === action.payload.product.id) != undefined) {
+        console.log("Not Found", action.payload);
+        
+        state.cartState = [...state.cartState, action.payload];
+      } else {
+        state.cartState.map((item: CartItemType) => {
+          if (item.product.id !== action.payload.product.id) {
+            // This isn't the item we care about - keep it as-is
+            return item
+          }
+      
+          // Otherwise, this is the one we want - return an updated value
+          return {
+            ...item,
+            ...action.payload
+          }
+        })
+      }
+
+    }
 
     // Special reducer for hydrating the state. Special case for next-redux-wrapper
     // extraReducers: {

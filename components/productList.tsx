@@ -11,7 +11,7 @@ export default function ProductList({products}:{products: Product[]}) {
     const cartState = useSelector(selectCartState);
     const dispatch = useDispatch();
 
-    const checkProduct = (event: any, productId: number) => {
+    const checkProduct = (event: any, productId: any) => {
         const productNumber = parseInt(event.target.value)
         
         if(products.find(p => p.id === productId) !== undefined && productNumber > -1 && productNumber < 1001) {
@@ -19,13 +19,13 @@ export default function ProductList({products}:{products: Product[]}) {
         }
     }
 
-    const addToCartClick = (productId: number) => {
+    const addToCartClick = (productId: any) => {
         if(Object.keys(numberToBuy).find(p => parseInt(p) === productId && numberToBuy[productId] > 0 && numberToBuy[productId] < 1001)) {
             // logic to add to cart
             console.log(numberToBuy[productId])
             const product = products.filter(p => p.id === productId)[0] 
             console.log(product)
-            dispatch(addToCart(product))
+            dispatch(addToCart({amount: numberToBuy[productId], product: product}))
         } 
     }
 

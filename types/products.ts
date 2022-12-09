@@ -11,3 +11,8 @@ export type Product = {
     images: string[],
     category: number
 }
+
+export type CartItemType = {
+    amount: number,
+    product: Product
+}

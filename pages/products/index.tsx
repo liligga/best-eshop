@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import styles from '../../styles/Home.module.css'
-import ProductSearch from '../../components/productSearch'
-import ProductList from '../../components/productList'
-import { Product } from '../../types/products'
+import styles from '@/styles/Home.module.css'
+import ProductSearch from '@/components/productSearch'
+import ProductList from '@/components/productList'
+import { Product } from '@/types/products'
 
 
 const getProducts = async () => {

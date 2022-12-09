@@ -1,11 +1,15 @@
-import { Product } from '../types/products'
+import { Product } from '@/types/products'
 import Link from 'next/link'
-import styles from '../styles/Home.module.css'
+import styles from '@/styles/Home.module.css'
 import { useState } from 'react'
+import { selectCartState, addToCart } from "@/store/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 
 export default function ProductList({products}:{products: Product[]}) {
     const [numberToBuy, setNumberToBuy] = useState({})
+    const cartState = useSelector(selectCartState);
+    const dispatch = useDispatch();
 
     const checkProduct = (event: any, productId: number) => {
         const productNumber = parseInt(event.target.value)
@@ -15,10 +19,13 @@ export default function ProductList({products}:{products: Product[]}) {
         }
     }
 
-    const addToCart = (productId: number) => {
+    const addToCartClick = (productId: number) => {
         if(Object.keys(numberToBuy).find(p => parseInt(p) === productId && numberToBuy[productId] > 0 && numberToBuy[productId] < 1001)) {
             // logic to add to cart
             console.log(numberToBuy[productId])
+            const product = products.filter(p => p.id === productId)[0] 
+            console.log(product)
+            dispatch(addToCart(product))
         } 
     }
 
@@ -33,7 +40,7 @@ export default function ProductList({products}:{products: Product[]}) {
                 <p>Цена: {p.price}</p>
                 <p>Категория: {p.category}</p>
                 <input type="number" name="numberToBuy" min="0" max="1000" onChange={(e) => checkProduct(e, p.id)} />
-                <button onClick={(e) => addToCart(p.id)}>Добавить в корзину</button>
+                <button onClick={(e) => addToCartClick(p.id)}>Добавить в корзину</button>
             </div>
 
         )}

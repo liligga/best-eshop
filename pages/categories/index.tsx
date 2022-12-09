@@ -1,7 +1,7 @@
-import styles from '../../styles/Home.module.css'
-import ProductList from '../../components/productList'
+import styles from '@/styles/Home.module.css'
+import ProductList from '@/components/productList'
 import { useEffect, useState } from 'react'
-import { Category, Product } from '../../types/products'
+import { Category, Product } from '@/types/products'
 
 
 const getProducts = async () => {

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { Product } from '../../types/products'
+import { Product } from '@/types/products'
 
 
 export default function handler(

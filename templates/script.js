@@ -5,3 +5,7 @@ product.forEach((item) => {
     window.location.href = "product_view.html";
   });
 });
+
+const categories = document.querySelectorAll('.category > div')
+
+

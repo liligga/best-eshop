@@ -4,14 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
       integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
-    />
+      />
     <link rel="stylesheet" href="styles/style.css" />
 
     <title>Internet Shop</title>
@@ -43,7 +42,7 @@
     <!-- start home -->
     <section class="home" id="home">
       <div class="content">
-        <h3>Cannabis</h3>
+        <h3>Best clothes in the univeristy</h3>
         <span>natural cannabis</span>
         <p>
           lSunt voluptate amet esse pariatur voluptate aliquip aute qui laboris
@@ -116,6 +115,64 @@
     <!-- start product list  -->
     <section class="products" id="products">
       <h1 class="heading">latest <span>products</span></h1>
+
+      <div class="filter">
+        <div class="priceSlider">
+          <!-- <h1>Price</h1> -->
+
+          <div class="min-max">
+            <div class="min">
+              <label>Min</label><span id="min-value">$1</span>
+            </div>
+            <div class="max">
+              <label>Max</label><span id="max-value">$1000</span>
+            </div>
+          </div>
+
+          <div class="min-max-range">
+            <input type="range" min="0" max="5000" value="2000" class="range"
+              id="min">
+            <input type="range" min="5001" max="10000" value="8000"
+              class="range" id="max">
+          </div>
+
+          <div style="clear: both;"></div>
+        </div>
+        <div class="category">
+          <div>#Lorem</div>
+          <div>#ipsum</div>
+          <div>#dolor</div>
+          <div>#sit</div>
+          <div>#amet</div>
+          <div>#consectetur</div>
+          <div>#adipisicing</div>
+          <div>#est</div>
+          <div>#quaerat</div>
+        </div>
+
+        <div class="color_category">
+          <div class="blue"></div>
+          <div class="red"></div>
+          <div class="pink"></div>
+          <div class="green"></div>
+          <div class="blue"></div>
+          <div class="red"></div>
+          <div class="pink"></div>
+          <div class="green"></div><div class="blue"></div>
+          <div class="red"></div>
+          <div class="pink"></div>
+          <div class="green"></div>
+          <div class="blue"></div>
+          <div class="red"></div>
+          <div class="pink"></div>
+          <div class="green"></div>
+          <div class="blue"></div>
+          <div class="red"></div>
+          <div class="pink"></div>
+          <div class="green"></div>
+        </div>
+      </div>
+
 
       <div class="box-container">
         <div class="box">
@@ -232,24 +289,6 @@
           </div>
         </div>
 
-        <div class="box">
-          <span class="discount">-10%</span>
-
-          <div class="image">
-            <img src="media/img-2.jpg" alt="" />
-            <div class="icons">
-              <a href="#" class="fas fa-heart"></a>
-              <a href="#" class="cart-btn">add to cart</a>
-              <a href="#" class="fas fa-share"></a>
-            </div>
-          </div>
-
-          <div class="content">
-            <h3>flower pot</h3>
-
-            <div class="price">$12.99 <span>$15.99</span></div>
-          </div>
-        </div>
       </div>
     </section>
     <!-- end products list -->

@@ -22,10 +22,10 @@
             <a href="#" class="logo">Univer<span>.</span></a>
 
             <nav class="navbar">
-                <a href="#home">home</a>
-                <a href="#about">about</a>
-                <a href="#products">products</a>
-                <a href="#review">review</a>
+                <a href="index.html#home">home</a>
+                <a href="index.html#about">about</a>
+                <a href="index.html#products">products</a>
+                <a href="index.html#review">review</a>
                 <a href="contacts.html">contacts</a>
             </nav>
 
@@ -48,7 +48,11 @@
                 </div>
                 <div class="row_right">
                     <div class="total_price">10$</div>
-                    <div class="delete"></div>
+                    <div class="counter">
+                        <div class="down" onClick="decreaseCount(event, this)">-</div>
+                        <input type="text" readonly value="1" />
+                        <div class="up" onClick="increaseCount(event, this)">+</div>
+                    </div>
                 </div>
             </div>
         </section>

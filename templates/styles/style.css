@@ -710,6 +710,119 @@ section.cart>.cart_container {
   background-color: rgb(181, 41, 145);
 }
 
+/* Contacts page styles */
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  font-family: Arial, Helvetica, sans-serirf;
+  /* background: #11a5df2b; */
+  padding-top: 10vw;
+  /* width: 80vw; */
+  /* padding: 15px; */
+}
+
+.container>h2 {
+  color: var(--blue);
+  font-size: 3rem;
+  /* font-weight: bold; */
+}
+
+.contact-info {
+  padding-top: 2rem;
+
+  display: flex;
+  width: 90%;
+}
+
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  box-shadow: 0 0 15px grey;
+  text-align: center;
+  color: gray;
+  border-radius: 5px;
+  padding: 7px;
+  /* align-items: center; */
+
+}
+
+.details {
+  font-family: 'Ubuntu', sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  background: var(--blue);
+  color: var(--red);
+  border-radius: 5px;
+  padding: 7px;
+  box-shadow: 0 0 15px rgb(46, 119, 196);
+
+}
+
+.contact-items {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  /* margin-left: 5px; */
+}
+
+.contact-items-wrapper {
+  padding: 25px;
+}
+
+.details h3 {
+  text-align: center;
+}
+
+.details p {
+  font-size: 15px;
+  margin-left: 15px;
+}
+
+.details p a {
+  /* color: white; */
+  color: var(--red);
+}
+
+.details p a:hover {
+  color: rgb(160, 154, 154);
+}
+
+.material-icons {
+  width: 12px;
+  margin: 5px;
+}
+
+input {
+  margin: 5px 15px;
+  height: 25px;
+}
+
+textarea {
+  height: 150px;
+  margin: 5px 15px;
+}
+
+.container button {
+  margin: 5px 15px;
+  width: 80px;
+  background: var(--blue);
+  padding: 0.5rem 2rem;
+  border: 0;
+  border-radius: 5px;
+  color: white;
+  font-size: 15px;
+}
+
+/* @media screen and (max-width:780px) { */
+
 
 @media (max-width: 1250px) {
   header {
@@ -733,6 +846,25 @@ section.cart>.cart_container {
   html .fa-bars {
     display: block;
   }
+
+  .contact-info {
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .container>h2 {
+    padding-top: 5rem
+  }
+
+  form {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .details {
+    width: 100%;
+  }
+
 
   header .navbar {
     position: absolute;

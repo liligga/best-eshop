@@ -1,8 +1,6 @@
 import styles from '@/styles/Home.module.css'
 import Link from 'next/link'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-
-// import the icons you need
 import {
     faBars,
     faHeart,

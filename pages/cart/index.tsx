@@ -16,24 +16,21 @@ export default function CartPage() {
         setTotalFee(totalFee + fee)
     }
 
+
     return (
-        <div className={styles.container}>
-            <main className={styles.main}>
-                <h3>Товары в корзине</h3>
-                <table>
-                    {cartState.map((p: Product, ind: number) =>
-                        <CartItem product={p} ind={ind+1} updateTotal={countTotal}/>                                      
-                    )}
-                    <tr>
-                        <td>
-                            Всего:
-                        </td>
-                        <td>
-                            ${totalFee}
-                        </td>
-                    </tr>
-                </table>
-            </main>
-        </div>
+        <section className="cart">
+            { cartState.length < 1 ? <div>No products in your shopping cart</div> : 
+                <>
+                    <h3>Products in your shopping cart:</h3>
+                    <div className="cart_container">
+                        {cartState.map((p: CartItemType, ind: number) =>
+                            <CartItem cartItem={p} ind={ind+1} updateTotal={countTotal}/>                                      
+                        )}
+
+                    </div>
+                </>
+            }
+
+        </section>
     )
 }

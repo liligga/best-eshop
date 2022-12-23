@@ -22,27 +22,34 @@ export const cartSlice = createSlice({
   reducers: {
 
     // Action to set the cart status
-    addToCart: (state, action: PayloadAction<CartItemType>) => {
-      // state.cartState = [...state.cartState, action.payload]
-      console.log(state.cartState);
+    addToCart: (state, action) => {
+      // console.log("Payload:", action.payload);
       
-      if(state.cartState.find((p: CartItemType) => p.product.id === action.payload.product.id) != undefined) {
-        console.log("Not Found", action.payload);
+      if(state.cartState.find((p: CartItemType) => p.product.id == action.payload.product.id) == undefined ) {
+        // if not found
         
         state.cartState = [...state.cartState, action.payload];
       } else {
-        state.cartState.map((item: CartItemType) => {
-          if (item.product.id !== action.payload.product.id) {
-            // This isn't the item we care about - keep it as-is
-            return item
-          }
+        // if found
+        state.cartState = [
+          ...state.cartState.filter( p => p.product.id !== action.payload.product.id),
+          action.payload
+        ]
+
+        // state.cartState.map((item: CartItemType) => {
+        //   if (item.product.id !== action.payload.product.id) {
+            
+        //     return item
+        //   }
       
-          // Otherwise, this is the one we want - return an updated value
-          return {
-            ...item,
-            ...action.payload
-          }
-        })
+        //   // Otherwise, this is the one we want - return an updated value
+        //   console.log(action.payload);
+          
+        //   return {
+        //     ...item,
+        //     ...action.payload
+        //   }
+        // })
       }
 
     }

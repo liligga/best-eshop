@@ -14,7 +14,7 @@ export default function ProductList({products}:{products: Product[]}) {
     const cartState = useSelector(selectCartState);
     const dispatch = useDispatch();
 
-    const checkProduct = (event: any, productId: any) => {
+    const checkProduct = (productId: number) => (event: any) => {
         const productNumber = parseInt(event.target.value)
         
         if(products.find(p => p.id === productId) !== undefined && productNumber > -1 && productNumber < 1001) {
@@ -22,14 +22,15 @@ export default function ProductList({products}:{products: Product[]}) {
         }
     }
 
-    const addToCartClick = (productId: any) => {
-        if(Object.keys(numberToBuy).find(p => parseInt(p) === productId && numberToBuy[productId] > 0 && numberToBuy[productId] < 1001)) {
+    const addToCartClick = (productId: number) => (e: any) => {
+        e.preventDefault()
+        // if(Object.keys(numberToBuy).find(p => parseInt(p) === productId && numberToBuy[productId] > 0 && numberToBuy[productId] < 1001)) {
             // logic to add to cart
-            console.log(numberToBuy[productId])
+            // console.log(numberToBuy[productId])
             const product = products.filter(p => p.id === productId)[0] 
-            console.log(product)
-            dispatch(addToCart({amount: numberToBuy[productId], product: product}))
-        } 
+            console.log("Product:",product, cartState)
+            dispatch(addToCart({amount: numberToBuy[product.id] || 1, product: product}))
+        // } 
     }
 
     return (
@@ -39,42 +40,42 @@ export default function ProductList({products}:{products: Product[]}) {
 
             <div className="box-container">
             {products.length < 1 ? 
-                <div><h1>Nothing Found</h1></div> : null
-            }
-            {products.map((p) => 
+                <div><h1>Nothing Found</h1></div> : 
+                products.map((p) => 
 
 
-                    <div className="box">
-                        <span className="discount">-{p.discount}%</span>
+                        <div className="box">
+                            <span className="discount">-{p.discount}%</span>
 
-                        <div className="image">
-                            <Link href={`/products/${p.id}`}>
-                                <img src="media/img-2.jpg" alt="" />
-                            </Link>
-                            
-                            <div className="icons">
-                                <input 
-                                    type="number" 
-                                    name="numberToBuy" 
-                                    min="1" 
-                                    max="1000" 
-                                    onChange={(e) => checkProduct(e, p.id)} />
-                                <button 
-                                    className="cart-btn"
-                                    onClick={(e) => addToCartClick(p.id)}>Add to cart</button>
-                                <FontAwesomeIcon icon={faHeart}/>
-                                <FontAwesomeIcon icon={faShare}/>
+                            <div className="image">
+                                <Link href={`/products/${p.id}`}>
+                                    <img src="media/img-2.jpg" alt="" />
+                                </Link>
+                                
+                                <div className="icons">
+                                    <input 
+                                        type="number" 
+                                        name="numberToBuy" 
+                                        min="1" 
+                                        max="1000" 
+                                        onChange={checkProduct(p.id)} />
+                                    <button 
+                                        className="cart-btn"
+                                        onClick={addToCartClick(p.id)}>Add to cart</button>
+                                    <FontAwesomeIcon icon={faHeart}/>
+                                    <FontAwesomeIcon icon={faShare}/>
+                                </div>
+                            </div>
+
+                            <div className="content">
+                                <Link href={`/products/${p.id}`}>
+                                    <h3>{p.name}</h3>
+                                </Link>
+                                <div className="price">${p.price * (100-p.discount)/100} <span>${p.price}</span></div>
                             </div>
                         </div>
-
-                        <div className="content">
-                            <Link href={`/products/${p.id}`}>
-                                <h3>{p.name}</h3>
-                            </Link>
-                            <div className="price">${p.price * (100-p.discount)/100} <span>${p.price}</span></div>
-                        </div>
-                    </div>
-            )}
+                )
+            }
             </div>
         </section>
 

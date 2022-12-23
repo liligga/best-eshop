@@ -12,9 +12,13 @@ export default function CartPage() {
     const cartState = useSelector(selectCartState);
     const dispatch = useDispatch();
 
-    const countTotal = (fee: number) => {
-        setTotalFee(totalFee + fee)
+    const updateCart = (productId: number) => (e: any) => {
+        const product = cartState.filter(p => p.product.id === productId)?.[0]?.product
+        console.log("Product:",product, cartState)
+        dispatch(addToCart({amount: parseInt(e.target.value) || 1, product: product}))
     }
+
+
 
 
     return (
@@ -24,7 +28,7 @@ export default function CartPage() {
                     <h3>Products in your shopping cart:</h3>
                     <div className="cart_container">
                         {cartState.map((p: CartItemType, ind: number) =>
-                            <CartItem cartItem={p} ind={ind+1} updateTotal={countTotal}/>                                      
+                            <CartItem cartItem={p} updateTotal={updateCart} key={p.product.id} />                                      
                         )}
 
                     </div>

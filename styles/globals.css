@@ -559,13 +559,12 @@ section.cart {
 }
 
 section.cart>.cart_container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
+  display: grid;
   background-color: #e8e8e8;
-  border-radius: 1rem;
-  padding: 2rem
+  border-radius: 6px;
+  padding: 15px;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px 0;
 }
 
 .cart_container .row_left .product_name {

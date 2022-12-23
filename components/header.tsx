@@ -7,9 +7,13 @@ import {
     faShoppingCart,
     faUser
 } from "@fortawesome/free-solid-svg-icons"
+import { selectNumberOfProducts } from "@/store/cartSlice";
+import { useSelector } from "react-redux";
 
 
 export default function SiteHeader() {
+    const numberOfProducts = useSelector(selectNumberOfProducts);
+
     return (
         <header>
             <input type="checkbox" name="" id="toggler" />
@@ -33,7 +37,7 @@ export default function SiteHeader() {
                 </Link>
                 <Link href="/cart" className="fas fa-shopping-cart cart-link">
                     <FontAwesomeIcon icon={faShoppingCart} className="fas fa-shopping-cart" />
-                    <span>1</span></Link>
+                    <span>{numberOfProducts}</span></Link>
                 <Link href="#" >
                     <FontAwesomeIcon icon={faUser} className="fas fa-user" />
                 </Link>

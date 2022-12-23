@@ -57,7 +57,8 @@ export default function ProductList({products}:{products: Product[]}) {
                                         type="number" 
                                         name="numberToBuy" 
                                         min="1" 
-                                        max="1000" 
+                                        max="1000"
+                                        value={numberToBuy[p.id] || 1}
                                         onChange={checkProduct(p.id)} />
                                     <button 
                                         className="cart-btn"

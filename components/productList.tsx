@@ -4,6 +4,9 @@ import styles from '@/styles/Home.module.css'
 import { useState } from 'react'
 import { selectCartState, addToCart } from "@/store/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
+import { faHeart, faShare} from "@fortawesome/free-solid-svg-icons"
 
 
 export default function ProductList({products}:{products: Product[]}) {
@@ -30,20 +33,50 @@ export default function ProductList({products}:{products: Product[]}) {
     }
 
     return (
-        <>
-        {products.map((p) => 
-            <div className={styles.card} key={p.id}>
-                <Link href={`/products/${p.id}`}>{p.name}</Link>
-                <p>
-                    {p.desc}
-                </p>
-                <p>Цена: {p.price}</p>
-                <p>Категория: {p.category}</p>
-                <input type="number" name="numberToBuy" min="0" max="1000" onChange={(e) => checkProduct(e, p.id)} />
-                <button onClick={(e) => addToCartClick(p.id)}>Добавить в корзину</button>
-            </div>
 
-        )}
-        </>
+        <section className="products" id="products">
+            
+
+            <div className="box-container">
+            {products.length < 1 ? 
+                <div><h1>Nothing Found</h1></div> : null
+            }
+            {products.map((p) => 
+
+
+                    <div className="box">
+                        <span className="discount">-{p.discount}%</span>
+
+                        <div className="image">
+                            <Link href={`/products/${p.id}`}>
+                                <img src="media/img-2.jpg" alt="" />
+                            </Link>
+                            
+                            <div className="icons">
+                                <input 
+                                    type="number" 
+                                    name="numberToBuy" 
+                                    min="1" 
+                                    max="1000" 
+                                    onChange={(e) => checkProduct(e, p.id)} />
+                                <button 
+                                    className="cart-btn"
+                                    onClick={(e) => addToCartClick(p.id)}>Add to cart</button>
+                                <FontAwesomeIcon icon={faHeart}/>
+                                <FontAwesomeIcon icon={faShare}/>
+                            </div>
+                        </div>
+
+                        <div className="content">
+                            <Link href={`/products/${p.id}`}>
+                                <h3>{p.name}</h3>
+                            </Link>
+                            <div className="price">${p.price * (100-p.discount)/100} <span>${p.price}</span></div>
+                        </div>
+                    </div>
+            )}
+            </div>
+        </section>
+
     )
 }

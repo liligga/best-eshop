@@ -35,17 +35,11 @@ export default function ProductListPage() {
 
 
     return (
-        <div className={styles.container}>
-            <main className={styles.main}>
-                <h3>Список наших товаров</h3>
-                <ProductSearch onSearch={submitSearch}/>
-                <div className={styles.productList}>
-                    <ProductList products={products.filter((p: Product) => p.name.toLowerCase().includes(searchToken)||p.desc.toLowerCase().includes(searchToken))} />
-                </div>
-                
-            </main>
-        </div>
-
-
+        <>
+            <h3 className='productsHeading'>Our products</h3>
+            <ProductSearch onSearch={submitSearch}/>
+            <ProductList products={products.filter((p: Product) => p.name.toLowerCase().includes(searchToken)||p.desc.toLowerCase().includes(searchToken))} />
+            
+        </>
     )
 }

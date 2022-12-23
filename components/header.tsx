@@ -1,31 +1,46 @@
 import styles from '@/styles/Home.module.css'
 import Link from 'next/link'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
+// import the icons you need
+import {
+    faBars,
+    faHeart,
+    faShoppingCart,
+    faUser
+} from "@fortawesome/free-solid-svg-icons"
 
 
 export default function SiteHeader() {
     return (
-        <nav className={styles.navbar}>
-            <ul>
-                <li>
-                    <Link href="/">Главная</Link>    
-                </li>
-                <li>
-                    <Link href="/products">Все товары</Link>    
-                </li>
-                <li>
-                    <Link href="/categories">Категории</Link>    
-                </li>
-                <li>
-                    <Link href="/static/about-us">О нас</Link>
-                </li>
-                <li>
-                    <Link href="/static/write-us">Обратная связь</Link>
-                </li>
-                <li>
-                    <Link href="/cart">Корзина</Link>
-                </li>
-            </ul>
-        </nav>
+        <header>
+            <input type="checkbox" name="" id="toggler" />
+            {/* <label htmlFor="toggler" className="fa fa-bars"> */}
+                <FontAwesomeIcon icon={faBars} />
+            {/* </label> */}
+
+            <Link href="#" className="logo">Univer<span>.</span></Link>
+
+            <nav className="navbar">
+                <Link href="/">Home</Link>
+                <Link href="/static/about-us">About</Link>
+                <Link href="/products">Products</Link>
+                <Link href="/categories">Categories</Link>
+                <Link href="/static/write-us">Contacts</Link>
+            </nav>
+
+            <div className="icons">
+                <Link href="#">
+                    <FontAwesomeIcon icon={faHeart} className="fas fa-heart"/>
+                </Link>
+                <Link href="/cart" className="fas fa-shopping-cart cart-link">
+                    <FontAwesomeIcon icon={faShoppingCart} className="fas fa-shopping-cart" />
+                    <span>1</span></Link>
+                <Link href="#" >
+                    <FontAwesomeIcon icon={faUser} className="fas fa-user" />
+                </Link>
+            </div>
+        </header>
 
     )
 }

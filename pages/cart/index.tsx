@@ -20,7 +20,7 @@ export default function CartPage() {
 
     return (
         <section className="cart">
-            { cartState.length < 1 ? <div>No products in your shopping cart</div> : 
+            { cartState.length < 1 ? <div><h3>No products in your shopping cart</h3></div> : 
                 <>
                     <h3>Products in your shopping cart:</h3>
                     <div className="cart_container">
@@ -29,9 +29,10 @@ export default function CartPage() {
                         )}
 
                     </div>
+                    <div className="cart_container">Total: $0</div>
                 </>
             }
-            <div className="cart_container">Total: $0</div>
+            
         </section>
     )
 }

@@ -14,8 +14,19 @@ export default function ProductSearch({onSearch}:any) {
         absoluteMax: 10000
     })
 
+    const [filter, setFilter] = useState({
+        priceMin: 0,
+        priceMax: 10000,
+        category: null,
+        color: null
+    })
+
     const changePrice = (kee: any) => (e: any) => {
         setPrice({...price, [kee]: e.target.value})
+    }
+
+    const changeFilter = (e: any) => {
+        
     }
 
     return (

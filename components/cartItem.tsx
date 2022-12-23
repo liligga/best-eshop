@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 import { Product, CartItemType } from '@/types/products'
 import { removeFromCart } from "@/store/cartSlice";
 import { useDispatch } from "react-redux";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons"
 
 export default function CartItem({cartItem, updateTotal}: {cartItem: CartItemType, updateTotal: any}) {
     const [number, setNumber] = useState(1)
@@ -26,17 +27,28 @@ export default function CartItem({cartItem, updateTotal}: {cartItem: CartItemTyp
         <>
             <div className="row_left">
                 <div className="product_name">{cartItem.product.name}</div>
-                <div className="pro_bot">
-                    <div className="count">
-                        <input value={cartItem.amount} type="number" name="items" min="0" max="1000" onChange={updateTotal(cartItem.product.id)} />шт.
-                    </div>
-                    <div className="price">${cartItem.product.price}</div>
-                    <div className="status">на складе</div>
+                <div className="count number-input">
+                    <button> - </button>
+                    <input
+                        value={cartItem.amount} 
+                        type="number" 
+                        name="items" 
+                        min="0" 
+                        max="1000" 
+                        onChange={updateTotal(cartItem.product.id)} />
+                    <button> + </button>    
+                    
                 </div>
+                <span>шт.</span>
+                <div className="price">${cartItem.product.price}</div>
+                <div className="status">на складе</div>
+
             </div>
             <div className="row_right">
                 <div className="total_price">${countSubTotal(cartItem.product.price, cartItem.amount)}</div>
-                <div className="delete" onClick={(e) => dispatch(removeFromCart(cartItem.product.id))}>удалить</div>
+                <div className="delete" onClick={(e) => dispatch(removeFromCart(cartItem.product.id))}>
+                    <FontAwesomeIcon icon={faTrashCan} />
+                </div>
             </div>
         </> 
     )

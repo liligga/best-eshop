@@ -10,7 +10,7 @@ export type Product = {
     discount: number,
     desc: string,
     images: string[],
-    category: number
+    category: string
 }
 
 export type CartItemType = {

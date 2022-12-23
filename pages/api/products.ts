@@ -15,7 +15,7 @@ export default function handler(
         discount: 10,
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, laboriosam!",
         images: ["1.jpg"],
-        category: 1
+        category: "lorem"
       },
       {
         id: 2,
@@ -24,7 +24,7 @@ export default function handler(
         discount: 10,
         desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab, tempora doloribus!",
         images: ["2.jpg"],
-        category: 2
+        category: "ipsum"
       },
       {
         id: 3,
@@ -33,7 +33,7 @@ export default function handler(
         discount: 10,
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptas ex vitae!",
         images: ["3.jpg"],
-        category: 3
+        category: "dolor"
       }
     ]
   )

@@ -5,7 +5,6 @@ import { useState } from 'react'
 import { selectCartState, addToCart } from "@/store/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-
 import { faHeart, faShare} from "@fortawesome/free-solid-svg-icons"
 
 
@@ -14,11 +13,11 @@ export default function ProductList({products}:{products: Product[]}) {
     const cartState = useSelector(selectCartState);
     const dispatch = useDispatch();
 
-    const checkProduct = (productId: number) => (event: any) => {
-        const productNumber = parseInt(event.target.value)
+    const checkProduct = (productId: number, shift: number) => (event: any) => {
+        const productNumber = (numberToBuy[productId] || 1) + shift;
         
         if(products.find(p => p.id === productId) !== undefined && productNumber > -1 && productNumber < 1001) {
-            setNumberToBuy({...numberToBuy, [productId]: productNumber})
+            setNumberToBuy(curr => {return {...curr, [productId]: productNumber}})
         }
     }
 
@@ -42,8 +41,6 @@ export default function ProductList({products}:{products: Product[]}) {
             {products.length < 1 ? 
                 <div><h1>Nothing Found</h1></div> : 
                 products.map((p) => 
-
-
                         <div className="box">
                             <span className="discount">-{p.discount}%</span>
 
@@ -53,13 +50,17 @@ export default function ProductList({products}:{products: Product[]}) {
                                 </Link>
                                 
                                 <div className="icons">
-                                    <input 
-                                        type="number" 
-                                        name="numberToBuy" 
-                                        min="1" 
-                                        max="1000"
-                                        value={numberToBuy[p.id] || 1}
-                                        onChange={checkProduct(p.id)} />
+                                    <div className="number-input">
+                                        <button onClick={checkProduct(p.id, -1)}> - </button>
+                                        <input
+                                            type="number" 
+                                            name="numberToBuy" 
+                                            min="1" 
+                                            max="1000"
+                                            value={numberToBuy[p.id] || 1} />
+                                        <button onClick={checkProduct(p.id, 1)}> + </button>
+                                    </div>
+                                    
                                     <button 
                                         className="cart-btn"
                                         onClick={addToCartClick(p.id)}>Add to cart</button>

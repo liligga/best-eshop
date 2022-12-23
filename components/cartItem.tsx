@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react"
 import { Product, CartItemType } from '@/types/products'
+import { removeFromCart } from "@/store/cartSlice";
+import { useDispatch } from "react-redux";
 
 
 export default function CartItem({cartItem, updateTotal}: {cartItem: CartItemType, updateTotal: any}) {
     const [number, setNumber] = useState(1)
+    const dispatch = useDispatch();
 
     // useEffect(() => {
     //     updateTotal(countTotal(cartItem.product.price, number))
@@ -15,7 +18,7 @@ export default function CartItem({cartItem, updateTotal}: {cartItem: CartItemTyp
     //     updateTotal(parseFloat(countTotal(cartItem.product.price, n)))
     // }
 
-    const countTotal = (price: number, number: number) => {
+    const countSubTotal = (price: number, number: number) => {
         return (price * number).toFixed(2)
     }
 
@@ -32,8 +35,8 @@ export default function CartItem({cartItem, updateTotal}: {cartItem: CartItemTyp
                 </div>
             </div>
             <div className="row_right">
-                <div className="total_price">${countTotal(cartItem.product.price, cartItem.amount)}</div>
-                <div className="delete"></div>
+                <div className="total_price">${countSubTotal(cartItem.product.price, cartItem.amount)}</div>
+                <div className="delete" onClick={(e) => dispatch(removeFromCart(cartItem.product.id))}>удалить</div>
             </div>
         </> 
     )

@@ -18,9 +18,6 @@ export default function CartPage() {
         dispatch(addToCart({amount: parseInt(e.target.value) || 1, product: product}))
     }
 
-
-
-
     return (
         <section className="cart">
             { cartState.length < 1 ? <div>No products in your shopping cart</div> : 
@@ -34,7 +31,7 @@ export default function CartPage() {
                     </div>
                 </>
             }
-
+            <div className="cart_container">Total: $0</div>
         </section>
     )
 }

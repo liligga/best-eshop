@@ -6,7 +6,7 @@ enum Price {
 }
 
 
-export default function ProductSearch({onSearch}:any) {
+export default function ProductSearch({onSearch, onFilter}:any) {
     const [price, setPrice] = useState({
         min: 0,
         max: 10000,
@@ -14,20 +14,16 @@ export default function ProductSearch({onSearch}:any) {
         absoluteMax: 10000
     })
 
-    const [filter, setFilter] = useState({
-        priceMin: 0,
-        priceMax: 10000,
-        category: null,
-        color: null
-    })
 
     const changePrice = (kee: any) => (e: any) => {
-        setPrice({...price, [kee]: e.target.value})
+        const result = {...price, [kee]: parseInt(e.target.value)}
+        if (result.min <= result.max) {
+            setPrice({...price, ...result})
+        }
+        onFilter(price.min, 'minPrice')
+        onFilter(price.max, 'maxPrice')
     }
 
-    const changeFilter = (e: any) => {
-        
-    }
 
     return (
 
@@ -49,46 +45,46 @@ export default function ProductSearch({onSearch}:any) {
                 </div>
 
                 <div className="min-max-range">
-                    <input type="range" min="0" max="10000" value={price.min} className="range"
+                    <input type="range" min="0" max="5000" value={price.min} className="range"
                     id="min" onChange={changePrice('min')}/>
-                    <input type="range" min="0" max="10000" value={price.max}
+                    <input type="range" min="0" max="5000" value={price.max}
                     className="range" id="max" onChange={changePrice('max')}/>
                 </div>
 
             </div>
             <div className="category">
-                <div>#Lorem</div>
-                <div>#ipsum</div>
-                <div>#dolor</div>
-                <div>#sit</div>
-                <div>#amet</div>
-                <div>#consectetur</div>
-                <div>#adipisicing</div>
-                <div>#est</div>
-                <div>#quaerat</div>
+                <div data-category="Lorem" onClick={onFilter('Lorem', 'category')}>#Lorem</div>
+                <div data-category="ipsum" onClick={onFilter('ipsum', 'category')}>#ipsum</div>
+                <div data-category="dolor" onClick={onFilter('dolor', 'category')}>#dolor</div>
+                <div data-category="sit" onClick={onFilter('sit', 'category')}>#sit</div>
+                <div data-category="amet" onClick={onFilter('amet', 'category')}>#amet</div>
+                <div data-category="consectetur" onClick={onFilter('consectetur', 'category')}>#consectetur</div>
+                <div data-category="adipisicing" onClick={onFilter('adipisicing', 'category')}>#adipisicing</div>
+                <div data-category="est" onClick={onFilter('est', 'category')}>#est</div>
+                <div data-category="quaerat" onClick={onFilter('quaerat', 'category')}>#quaerat</div>
             </div>
 
             <div className="color-category">
-                <div className="blue"></div>
-                <div className="red"></div>
-                <div className="pink"></div>
-                <div className="green"></div>
-                <div className="blue"></div>
-                <div className="red"></div>
-                <div className="pink"></div>
-                <div className="green"></div>
-                <div className="blue"></div>
-                <div className="red"></div>
-                <div className="pink"></div>
-                <div className="green"></div>
-                <div className="blue"></div>
-                <div className="red"></div>
-                <div className="pink"></div>
-                <div className="green"></div>
-                <div className="blue"></div>
-                <div className="red"></div>
-                <div className="pink"></div>
-                <div className="green"></div>
+                <div data-color="blue" onClick={onFilter('blue', 'color')} className="blue"></div>
+                <div data-color="red" onClick={onFilter('red', 'color')} className="red"></div>
+                <div data-color="pink" onClick={onFilter('pink', 'color')} className="pink"></div>
+                <div data-color="green" onClick={onFilter('green', 'color')} className="green"></div>
+                <div data-color="blue" onClick={onFilter('blue', 'color')} className="blue"></div>
+                <div data-color="red" onClick={onFilter('red', 'color')} className="red"></div>
+                <div data-color="pink" onClick={onFilter('pink', 'color')} className="pink"></div>
+                <div data-color="green" onClick={onFilter('green', 'color')} className="green"></div>
+                <div data-color="blue" onClick={onFilter('blue', 'color')} className="blue"></div>
+                <div data-color="red" onClick={onFilter('red', 'color')} className="red"></div>
+                <div data-color="pink" onClick={onFilter('pink', 'color')} className="pink"></div>
+                <div data-color="green" onClick={onFilter('green', 'color')} className="green"></div>
+                <div data-color="blue" onClick={onFilter('blue', 'color')} className="blue"></div>
+                <div data-color="red" onClick={onFilter('red', 'color')} className="red"></div>
+                <div data-color="pink" onClick={onFilter('pink', 'color')} className="pink"></div>
+                <div data-color="green" onClick={onFilter('green', 'color')} className="green"></div>
+                <div data-color="blue" onClick={onFilter('blue', 'color')} className="blue"></div>
+                <div data-color="red" onClick={onFilter('red', 'color')} className="red"></div>
+                <div data-color="pink" onClick={onFilter('pink', 'color')} className="pink"></div>
+                <div data-color="green" onClick={onFilter('green', 'color')} className="green"></div>
             </div>
         </div>
 

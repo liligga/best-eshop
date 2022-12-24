@@ -7,12 +7,22 @@ import {
     faShoppingCart,
     faUser
 } from "@fortawesome/free-solid-svg-icons"
-import { selectNumberOfProducts } from "@/store/cartSlice";
-import { useSelector } from "react-redux";
-
+import { selectNumberOfProducts, addToCart } from "@/store/cartSlice";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 
 export default function SiteHeader() {
     const numberOfProducts = useSelector(selectNumberOfProducts);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const cartItemsState = typeof window !== "undefined" ? JSON.parse(localStorage.getItem("cartProducts")) : null;
+        if (cartItemsState) {
+            for (let item of cartItemsState) {
+                dispatch(addToCart(item))
+            }
+        }
+    })
 
     return (
         <header>

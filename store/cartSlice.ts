@@ -4,6 +4,7 @@ import { HYDRATE } from "next-redux-wrapper";
 import { Product, CartItemType } from '@/types/products'
 import { countSubTotal } from "utils/products"
 
+
 // Type for our state
 export interface CartState {
   cartState: CartItemType[];
@@ -62,6 +63,10 @@ export const cartSlice = createSlice({
             item.amount)
         ),0).toFixed(2));
       }
+
+      localStorage.setItem("cartProducts", JSON.stringify(state.cartState));
+      localStorage.setItem("numberProducts", JSON.stringify(state.numOfProducts));
+      localStorage.setItem("total", JSON.stringify(state.totalSum));
     }
 
 

@@ -13,11 +13,11 @@ export default function ProductDetailsPage() {
     }
 
     return (
-        <div className={styles.container}>
-            <main className={styles.main}>
+
+            <main>
                 <h2>Подробнее о товаре {id}</h2>
                 <a onClick={handleClick}>Назад</a>
             </main>
-        </div>
+
     )
 }

@@ -4,48 +4,40 @@ import { removeFromCart } from "@/store/cartSlice";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons"
+import { countSubTotal } from "utils/products"
+
 
 export default function CartItem({cartItem, updateTotal}: {cartItem: CartItemType, updateTotal: any}) {
     const [number, setNumber] = useState(1)
     const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     updateTotal(countTotal(cartItem.product.price, number))
-    // }, [])
-
-    // const changeNumberOfItems = (e: any) => {
-    //     const n = parseInt(e.target.value)
-    //     setNumber(n)
-    //     updateTotal(parseFloat(countTotal(cartItem.product.price, n)))
-    // }
-
-    const countSubTotal = (price: number, number: number) => {
-        return (price * number).toFixed(2)
-    }
 
     return (
         <>
             <div className="row_left">
                 <div className="product_name">{cartItem.product.name}</div>
                 <div className="count number-input">
-                    <button> - </button>
+                    <button onClick={updateTotal(cartItem.product.id, -1)}> - </button>
                     <input
                         value={cartItem.amount} 
                         type="number" 
                         name="items" 
-                        min="0" 
-                        max="1000" 
-                        onChange={updateTotal(cartItem.product.id)} />
-                    <button> + </button>    
+                        min={1} 
+                        max={1000}
+                    />
+                    <button onClick={updateTotal(cartItem.product.id, 1)}> + </button>    
                     
                 </div>
                 <span>шт.</span>
-                <div className="price">${cartItem.product.price}</div>
+                <div className="price">${cartItem.product.price * (100 - cartItem.product.discount)/100}</div>
                 <div className="status">на складе</div>
 
             </div>
             <div className="row_right">
-                <div className="total_price">${countSubTotal(cartItem.product.price, cartItem.amount)}</div>
+                <div className="total_price">${countSubTotal(
+                    cartItem.product.price*(100 - cartItem.product.discount)/100, 
+                    cartItem.amount)
+                    }</div>
                 <div className="delete" onClick={(e) => dispatch(removeFromCart(cartItem.product.id))}>
                     <FontAwesomeIcon icon={faTrashCan} />
                 </div>

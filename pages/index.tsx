@@ -41,10 +41,12 @@ export default function Home() {
           <a id="#" className="btn">shop now</a>
         </div>
       </section>
-      <AboutUs />
-      <h1 className="heading">latest <span>products</span></h1>
-      <ProductList products={products}/>
-      <h2><Link href={`/products`}>See all products ..</Link></h2>
+      <main>
+        <AboutUs />
+        <h1 className="home-heading heading">latest <span>products</span></h1>
+        <ProductList products={products}/>
+        <h2 className='home-heading'><Link href={`/products`}>See all products ...</Link></h2>
+      </main>
     </>
   )
 }

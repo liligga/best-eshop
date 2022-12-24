@@ -34,8 +34,7 @@ export default function CategoriesPage() {
     }, [])
 
     return (
-        <div className={styles.container}>
-            <main className={styles.main}>
+            <main>
                 <h3>Список товаров по категориям</h3>
                 <ul className={styles.categoryList}>
                     <li><a href="#" onClick={() => setActiveCategory(true)}>Все</a></li>
@@ -49,6 +48,5 @@ export default function CategoriesPage() {
                     <ProductList products={products.filter(FILTER_MAP[typeof activeCategory])} />
                 </div>
             </main>
-        </div>
     )
 }

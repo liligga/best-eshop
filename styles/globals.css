@@ -100,7 +100,7 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   padding-bottom: 4em;
-  width: clamp(400px, 90vw, 1000px);
+  width: clamp(360px, 90vw, 1000px);
   margin-inline: auto;
   margin-top: 8em;
 }
@@ -243,6 +243,11 @@ header .fa-bars {
   background: rgba(245, 225, 223, 0.2);
 }
 
+.heading.home-heading {
+  width: 100%;
+  text-align: center;
+}
+
 .heading span {
   color: var(--yellow);
 }
@@ -367,6 +372,7 @@ section.icons .icon .info span {
   border-right: 0.1rem solid #fff7;
   width: 100%;
   cursor: pointer;
+  background-color: rgb(246, 195, 82);
 }
 
 .products .box-container .box:hover .icons {
@@ -1061,5 +1067,13 @@ section.cart>.cart_container {
 
   .heading {
     font-size: 3rem;
+  }
+}
+@media (max-width: 360px) {
+  main {
+    max-width: 350px;
+  }
+  h3 {
+    font-size: 18px;
   }
 }
